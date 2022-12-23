@@ -1,0 +1,6 @@
+export type { CategoryModelType } from './Category'
+export { Category } from './Category'
+export type { DishModelType } from './Dish'
+export { Dish } from './Dish'
+export type { MenuModelType } from './Menu'
+export { Menu } from './Menu'
