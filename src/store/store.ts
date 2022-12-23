@@ -1,70 +1,38 @@
 import makeInspectable from 'mobx-devtools-mst'
 import { createContext, useContext } from 'react'
 
-import type { RootModelType } from './models'
+import { CartInitialState } from '@/store/models/cart'
+import { MenuInitialState } from '@/store/models/menu'
+
+import type { RootModelType } from './models/Root'
 import { Root } from './models/Root'
 
 const initialState: RootModelType = {
   tables: [
     {
-      id: 1,
+      id: '1',
       number: 1,
       occupied: false,
     },
     {
-      id: 2,
+      id: '2',
       number: 2,
       occupied: true,
     },
+    {
+      id: '3',
+      number: 3,
+      occupied: false,
+    },
+    {
+      id: '4',
+      number: 4,
+      occupied: true,
+    },
   ],
-  menu: {
-    id: 1,
-    categories: [
-      {
-        id: 1,
-        name: 'Main',
-        dishes: [
-          {
-            id: 1,
-            name: 'Main 1',
-            price: 123,
-          },
-          {
-            id: 2,
-            name: 'Main 2',
-            price: 432,
-          },
-          {
-            id: 3,
-            name: 'Main 3',
-            price: 654,
-          },
-        ],
-      },
-      {
-        id: 2,
-        name: 'Salads',
-        dishes: [
-          {
-            id: 1,
-            name: 'Salad 1',
-            price: 543,
-          },
-        ],
-      },
-      {
-        id: 2,
-        name: 'Desserts',
-        dishes: [
-          {
-            id: 1,
-            name: 'Dessert 1',
-            price: 332,
-          },
-        ],
-      },
-    ],
-  },
+  occupiedTable: null,
+  menu: MenuInitialState,
+  cart: CartInitialState,
 }
 
 export const store = makeInspectable(Root.create(initialState))

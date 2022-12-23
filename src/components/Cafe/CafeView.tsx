@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { TableModelType } from '@/store/models/Table'
+import { TableModelType } from '@/store/models/table/Table'
 
 export type CafeViewType = {
   tables: TableModelType[]

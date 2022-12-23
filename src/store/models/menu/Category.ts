@@ -1,13 +1,13 @@
 import { Instance, types } from 'mobx-state-tree'
 
-import type { DishModelType } from '@/store/models/menu'
+import type { DishType } from '@/store/models/menu'
 
 import { Dish } from './Dish'
 
 export const Category = types.model({
-  id: types.identifierNumber,
+  id: types.identifier,
   name: types.string,
-  dishes: types.array<DishModelType>(Dish),
+  dishes: types.array<DishType>(Dish),
 })
 
-export interface CategoryModelType extends Instance<typeof Category> {}
+export interface CategoryType extends Instance<typeof Category> {}
