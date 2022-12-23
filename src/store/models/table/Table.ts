@@ -6,4 +6,4 @@ export const Table = types.model({
   occupied: types.boolean,
 })
 
-export interface TableModelType extends Instance<typeof Table> {}
+export interface TableType extends Instance<typeof Table> {}

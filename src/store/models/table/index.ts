@@ -1,2 +1,2 @@
-export type { TableModelType } from './Table'
+export type { TableType } from './Table'
 export { Table } from './Table'

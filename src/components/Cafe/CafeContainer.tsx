@@ -8,5 +8,5 @@ import { CafeView } from './CafeView'
 export const CafeContainer = observer(() => {
   const store = useStore()
 
-  return <CafeView tables={store.tables} />
+  return <CafeView store={store} />
 })

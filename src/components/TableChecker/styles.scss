@@ -1,0 +1,25 @@
+.search {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+
+  &__input {
+    max-width: 20rem;
+    box-shadow: 3px 3px 7px coral;
+    border: none;
+    border-radius: 2rem;
+    outline: none;
+    line-height: 2rem;
+    font-size: 1rem;
+    padding: 0 1rem 0;
+  }
+
+  &__status {
+    color: coral;
+    margin-top: 1rem;
+
+    &_error {
+      color: red;
+    }
+  }
+}
