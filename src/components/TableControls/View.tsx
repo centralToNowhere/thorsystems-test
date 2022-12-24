@@ -12,19 +12,29 @@ const actionLabels = {
 export interface TableControlsViewType {
   onTakeTable: () => void
   onFreeTable: () => void
+  freeTableDisabled: boolean
+  takeTableDisabled: boolean
 }
 
 export const TableControlsView = ({
   onTakeTable,
   onFreeTable,
+  freeTableDisabled,
+  takeTableDisabled,
 }: TableControlsViewType) => {
   return (
     <div className={'table-controls'}>
-      <Button className={'table-controls__button'} onClick={onFreeTable}>
+      <Button
+        className={'table-controls__button'}
+        onClick={onFreeTable}
+        disabled={freeTableDisabled}
+      >
         {actionLabels.freeTable}
       </Button>
 
-      <Button onClick={onTakeTable}>{actionLabels.takeTable}</Button>
+      <Button onClick={onTakeTable} disabled={takeTableDisabled}>
+        {actionLabels.takeTable}
+      </Button>
     </div>
   )
 }

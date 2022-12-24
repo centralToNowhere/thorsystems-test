@@ -16,10 +16,33 @@ export const TableControls = observer(() => {
 
   const onTakeTable = () => {
     if (store.selectedTable) {
+      if (store.selectedTable.occupied) {
+        return
+      }
+
       store.selectedTable.setOccupiedState(true)
       store.setOccupiedTable(store.selectedTable)
     }
   }
 
-  return <TableControlsView onFreeTable={onFreeTable} onTakeTable={onTakeTable} />
+  const isFreeTableBtnDisabled = () => {
+    const table = store.selectedTable
+
+    return !table || !table.occupied
+  }
+
+  const isTakeTableBtnDisabled = () => {
+    const table = store.selectedTable
+
+    return !table || table.occupied
+  }
+
+  return (
+    <TableControlsView
+      freeTableDisabled={isFreeTableBtnDisabled()}
+      takeTableDisabled={isTakeTableBtnDisabled()}
+      onFreeTable={onFreeTable}
+      onTakeTable={onTakeTable}
+    />
+  )
 })
