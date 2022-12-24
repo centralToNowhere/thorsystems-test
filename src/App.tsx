@@ -2,14 +2,14 @@ import '@/styles/global.scss'
 
 import React from 'react'
 
-import { CafeContainer } from '@/components/Cafe'
+import { Container } from '@/components/Cafe'
 import { store, StoreProvider } from '@/store/store'
 
 function App() {
   return (
     <React.StrictMode>
       <StoreProvider value={store}>
-        <CafeContainer />
+        <Container />
       </StoreProvider>
     </React.StrictMode>
   )

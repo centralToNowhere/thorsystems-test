@@ -1,30 +1,21 @@
-import './styles.scss'
+import './style.scss'
 
 import React from 'react'
 
-import { TableChecker } from '@/components/TableChecker'
-import { RootType } from '@/store/models/Root'
+import { Tables } from '@/components/Tables'
+import { TableType } from '@/store/models/table'
 
 export type CafeViewType = {
-  store: RootType[]
+  tables: TableType[]
+  occupiedTable: TableType
+  selectedTable: TableType
 }
 
-export const CafeView = ({ store }: CafeViewType) => {
+export const CafeView = () => {
   const renderTables = () => {
     return (
       <div className={'cafe__section'}>
-        <div className={'tables'}>
-          <div className={'tables__list'}>
-            {store.tables.map(table => {
-              return (
-                <div className={'tables__item'} key={table.id}>
-                  <p>{table.number}</p>
-                </div>
-              )
-            })}
-          </div>
-          <TableChecker />
-        </div>
+        <Tables />
       </div>
     )
   }

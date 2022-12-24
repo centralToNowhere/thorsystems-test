@@ -1,6 +1,6 @@
 .search {
   display: flex;
-  flex-direction: column;
+  gap: 1rem;
   margin-bottom: 1rem;
 
   &__input {
@@ -16,10 +16,6 @@
 
   &__status {
     color: coral;
-    margin-top: 1rem;
-
-    &_error {
-      color: red;
-    }
+    line-height: 2rem;
   }
 }

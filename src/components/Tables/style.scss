@@ -1,17 +1,3 @@
-.cafe {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  height: 100%;
-  background-color: coral;
-  gap: 1px;
-
-  &__section {
-    background-color: #fff;
-    padding: 1rem;
-  }
-}
-
 .tables {
   display: flex;
   flex-direction: column;
@@ -38,6 +24,11 @@
     background-color: #333;
     border-radius: 1rem;
     padding: 1rem;
+
+    &_selected {
+      background-color: white;
+      border: 1px solid coral;
+    }
 
     p {
       color: coral;

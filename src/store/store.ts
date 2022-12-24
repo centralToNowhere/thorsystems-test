@@ -31,6 +31,7 @@ const initialState: RootType = {
     },
   ],
   occupiedTable: null,
+  selectedTable: null,
   menu: MenuInitialState,
   cart: CartInitialState,
 }
