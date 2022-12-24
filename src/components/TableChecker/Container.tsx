@@ -49,6 +49,8 @@ export const TableChecker = observer(() => {
 
     if (!table) {
       setError(searchErrors.TABLE_NOT_FOUND)
+      store.setSelectedTable(null)
+      setTableStatus('')
       return
     }
 

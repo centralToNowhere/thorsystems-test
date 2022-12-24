@@ -18,16 +18,15 @@ export const TableCheckerView = ({
   onCheck,
 }: SearchViewType) => {
   return (
-    <div className={'search'}>
+    <div className={'table-checker'}>
       <InputSearch
         id={'tables-search'}
         name={'tables-search'}
-        className={'search__input'}
         onChange={onCheck}
         placeholder={label}
         error={error}
       />
-      <span className={`search__status`}>{tableStatus}</span>
+      <span className={`table-checker__status`}>{tableStatus}</span>
     </div>
   )
 }

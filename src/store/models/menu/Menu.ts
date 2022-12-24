@@ -38,18 +38,18 @@ export const MenuInitialState = {
       name: 'Salads',
       dishes: [
         {
-          id: '1',
+          id: '4',
           name: 'Salad 1',
           price: 543,
         },
       ],
     },
     {
-      id: '2',
+      id: '3',
       name: 'Desserts',
       dishes: [
         {
-          id: '1',
+          id: '5',
           name: 'Dessert 1',
           price: 332,
         },

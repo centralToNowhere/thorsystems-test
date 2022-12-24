@@ -11,6 +11,11 @@ export const TableControls = observer(() => {
   const onFreeTable = () => {
     if (store.selectedTable) {
       store.selectedTable.setOccupiedState(false)
+
+      if (store.selectedTable === store.occupiedTable) {
+        store.setOccupiedTable(null)
+        store.cart.clearCartItems()
+      }
     }
   }
 
@@ -22,6 +27,7 @@ export const TableControls = observer(() => {
 
       store.selectedTable.setOccupiedState(true)
       store.setOccupiedTable(store.selectedTable)
+      store.cart.clearCartItems()
     }
   }
 

@@ -42,7 +42,7 @@ const StoreContext = createContext<null | RootType>(null)
 
 export const StoreProvider = StoreContext.Provider
 
-export function useStore() {
+export function useStore(): RootType {
   const store = useContext(StoreContext)
 
   if (store === null) {

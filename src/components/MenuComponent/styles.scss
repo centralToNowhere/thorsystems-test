@@ -1,0 +1,31 @@
+.menu {
+  $self: &;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  span {
+    display: block;
+  }
+
+  ul {
+    padding-left: 1rem;
+  }
+
+  #{$self}__categories-list {
+    padding: 0;
+    flex: 1;
+  }
+
+  &__category-container {
+    margin-bottom: 1rem;
+  }
+
+  &__dish-container {
+    display: flex;
+  }
+
+  &__dish-price {
+    margin-left: auto;
+  }
+}

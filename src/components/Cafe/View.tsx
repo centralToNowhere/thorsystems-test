@@ -2,6 +2,8 @@ import './style.scss'
 
 import React from 'react'
 
+import { Cart } from '@/components/Cart'
+import { MenuComponent } from '@/components/MenuComponent'
 import { Tables } from '@/components/Tables'
 
 export const CafeView = () => {
@@ -18,7 +20,7 @@ export const CafeView = () => {
     return (
       <div className={'cafe__section'}>
         <span className={'cafe__section-title'}>Menu</span>
-        <div className={'menu'}></div>
+        <MenuComponent />
       </div>
     )
   }
@@ -27,7 +29,7 @@ export const CafeView = () => {
     return (
       <div className={'cafe__section'}>
         <span className={'cafe__section-title'}>Cart</span>
-        <div className={'cart'}></div>
+        <Cart />
       </div>
     )
   }

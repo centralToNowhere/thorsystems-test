@@ -1,5 +1,29 @@
-.input-search {
-  margin-bottom: 1rem;
+.search {
+  position: relative;
+
+  &__input {
+    max-width: 20rem;
+    box-shadow: 3px 3px 7px coral;
+    border: none;
+    border-radius: 2rem;
+    outline: none;
+    line-height: 2rem;
+    font-size: 1rem;
+    padding: 0 1rem 0;
+  }
+
+  &__status-container {
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    right: 1rem;
+    top: calc(1rem - (1.2rem / 2));
+
+    img {
+      width: 1.2rem;
+    }
+  }
 
   &__error-container {
     position: relative;
