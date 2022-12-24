@@ -3,18 +3,12 @@ import './style.scss'
 import React from 'react'
 
 import { Tables } from '@/components/Tables'
-import { TableType } from '@/store/models/table'
-
-export type CafeViewType = {
-  tables: TableType[]
-  occupiedTable: TableType
-  selectedTable: TableType
-}
 
 export const CafeView = () => {
   const renderTables = () => {
     return (
       <div className={'cafe__section'}>
+        <span className={'cafe__section-title'}>Tables</span>
         <Tables />
       </div>
     )
@@ -23,6 +17,7 @@ export const CafeView = () => {
   const renderMenu = () => {
     return (
       <div className={'cafe__section'}>
+        <span className={'cafe__section-title'}>Menu</span>
         <div className={'menu'}></div>
       </div>
     )
@@ -31,6 +26,7 @@ export const CafeView = () => {
   const renderCart = () => {
     return (
       <div className={'cafe__section'}>
+        <span className={'cafe__section-title'}>Cart</span>
         <div className={'cart'}></div>
       </div>
     )
@@ -39,6 +35,7 @@ export const CafeView = () => {
   const renderOrder = () => {
     return (
       <div className={'cafe__section'}>
+        <span className={'cafe__section-title'}>Order</span>
         <div className={'order'}></div>
       </div>
     )
