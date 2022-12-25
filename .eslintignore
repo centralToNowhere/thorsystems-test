@@ -4,4 +4,4 @@ build
 dist
 dist-ssr
 *.local
-node_modules/*
+thorsystems-test-backend

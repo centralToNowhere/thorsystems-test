@@ -1,0 +1,25 @@
+{
+  "kind": "singleType",
+  "collectionName": "roots",
+  "info": {
+    "singularName": "root",
+    "pluralName": "roots",
+    "displayName": "Root"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "occupiedTable": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::table.table"
+    },
+    "selectedTable": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::table.table"
+    }
+  }
+}

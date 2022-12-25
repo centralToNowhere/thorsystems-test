@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "order_positions",
+  "info": {
+    "singularName": "order-position",
+    "pluralName": "order-positions",
+    "displayName": "OrderPosition"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "quantity": {
+      "type": "integer"
+    },
+    "dish": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::dish.dish"
+    }
+  }
+}
