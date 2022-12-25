@@ -6,7 +6,7 @@ import { Button, InputSearch } from '@/components/ui'
 
 interface MenuControlsViewType {
   onAddToCart: () => void
-  onEnterDishName: () => void
+  onEnterDishName: (dishName: string) => void
   inputPlaceholder: string
   error: string
   buttonChooseText: string
@@ -19,12 +19,18 @@ export const MenuControlsView = ({
   error,
   buttonChooseText,
 }: MenuControlsViewType) => {
+  const onEnterDishNameHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value
+
+    onEnterDishName(value)
+  }
+
   return (
     <div className={'menu-controls'}>
       <InputSearch
         id={'menu-search'}
         name={'menu-search'}
-        onChange={onEnterDishName}
+        onChange={onEnterDishNameHandler}
         placeholder={inputPlaceholder}
         error={error}
       />

@@ -3,13 +3,15 @@ import './style.scss'
 import { observer } from 'mobx-react-lite'
 import React from 'react'
 
+import { Button } from '@/components/ui'
 import { CartType } from '@/store/models/cart'
 
 interface CartViewType {
   cartItems: CartType['items']
+  totalText: string
 }
 
-export const CartView = observer(({ cartItems }: CartViewType) => {
+export const CartViewBase = ({ cartItems, totalText }: CartViewType) => {
   return (
     <div className={'cart'}>
       <ul className={'cart__list'}>
@@ -23,6 +25,15 @@ export const CartView = observer(({ cartItems }: CartViewType) => {
           )
         })}
       </ul>
+      <div className={'cart__controls-container'}>
+        <span className={'cart__total'}>{totalText}</span>
+        <div className={'cart__buttons'}>
+          <Button>Clear</Button>
+          <Button>Order</Button>
+        </div>
+      </div>
     </div>
   )
-})
+}
+
+export const CartView = observer(CartViewBase)

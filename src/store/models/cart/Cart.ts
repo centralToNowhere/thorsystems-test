@@ -3,7 +3,7 @@ import { destroy, Instance, types } from 'mobx-state-tree'
 import { CartItem, CartItemType } from './CartItem'
 
 export const Cart = types
-  .model({
+  .model('Cart', {
     items: types.array(CartItem),
   })
   .actions(self => ({
@@ -14,7 +14,14 @@ export const Cart = types
       destroy(cartItem)
     },
     clearCartItems: () => {
-      self.items = []
+      self.items.clear()
+    },
+  }))
+  .views(self => ({
+    get total() {
+      return self.items.reduce((acc, curr: CartItemType) => {
+        return acc + curr.dish.price * curr.quantity
+      }, 0)
     },
   }))
 

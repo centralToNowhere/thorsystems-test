@@ -9,7 +9,7 @@ import { TableType } from '@/store/models/table'
 
 interface TablesViewType {
   tables: TableType[]
-  selectedTable: TableType
+  selectedTable: TableType | null
 }
 
 export const TablesView = ({ tables, selectedTable }: TablesViewType) => {

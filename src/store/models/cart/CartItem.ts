@@ -1,5 +1,6 @@
 import { getParent, Instance, types } from 'mobx-state-tree'
 
+import { CartType } from '@/store/models/cart/Cart'
 import { Dish } from '@/store/models/menu'
 
 const CART_ITEM_ID_PREFIX = 'cartItem_'
@@ -9,14 +10,14 @@ export const createCartItemId = () => {
 }
 
 export const CartItem = types
-  .model({
+  .model('CartItem', {
     id: types.identifier,
     quantity: types.number,
     dish: types.reference(Dish),
   })
   .actions(self => ({
     remove: () => {
-      getParent(self, 2).removeCartItem(self)
+      getParent<CartType>(self, 2).removeCartItem(self as CartItemType)
     },
     incrementQuantity: () => {
       self.quantity += 1

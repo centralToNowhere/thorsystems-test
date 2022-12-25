@@ -1,12 +1,10 @@
 import { Instance, types } from 'mobx-state-tree'
 
-import type { CategoryType } from '@/store/models/menu'
-
 import { Category } from './Category'
 
-export const Menu = types.model({
+export const Menu = types.model('Menu', {
   id: types.identifier,
-  categories: types.array<CategoryType>(Category),
+  categories: types.array(Category),
 })
 
 export const MenuInitialState = {

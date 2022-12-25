@@ -4,10 +4,10 @@ import { createContext, useContext } from 'react'
 import { CartInitialState } from '@/store/models/cart'
 import { MenuInitialState } from '@/store/models/menu'
 
-import type { RootType } from './models/Root'
+import type { RootSnapshotItType, RootType } from './models/Root'
 import { Root } from './models/Root'
 
-const initialState: RootType = {
+const initialState: RootSnapshotItType = {
   tables: [
     {
       id: '1',
@@ -36,7 +36,7 @@ const initialState: RootType = {
   cart: CartInitialState,
 }
 
-export const store = makeInspectable(Root.create(initialState))
+export const store = makeInspectable(Root.create(initialState)) as RootType
 
 const StoreContext = createContext<null | RootType>(null)
 

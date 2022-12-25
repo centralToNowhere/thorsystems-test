@@ -5,7 +5,7 @@ import React, { InputHTMLAttributes, useRef } from 'react'
 
 import CheckIcon from '@/assets/images/check.svg'
 
-interface InputSearchType extends InputHTMLAttributes {
+interface InputSearchType extends InputHTMLAttributes<HTMLInputElement> {
   error?: string
 }
 
@@ -14,7 +14,7 @@ export const InputSearch = ({ error, className, ...props }: InputSearchType) => 
 
   const inputClassNames = classNames({
     search__input: true,
-    [className]: className,
+    [className as string]: className,
   })
 
   const renderCheck = () => {

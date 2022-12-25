@@ -1,6 +1,6 @@
 import { Instance, types } from 'mobx-state-tree'
 
-export const Dish = types.model({
+export const Dish = types.model('Dish', {
   id: types.identifier,
   name: types.string,
   price: types.number,

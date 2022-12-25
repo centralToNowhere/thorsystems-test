@@ -8,7 +8,7 @@ interface ButtonType extends ButtonHTMLAttributes<HTMLButtonElement> {}
 export const Button: FC<ButtonType> = ({ className, children, ...props }) => {
   const btnClasses = classNames({
     button: true,
-    [className]: className,
+    [className as string]: className,
   })
 
   return (

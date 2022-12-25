@@ -3,6 +3,21 @@
   flex-direction: column;
   height: 100%;
 
+  &__list {
+    flex: 1
+  }
+
+  &__controls-container {
+    display: flex;
+    align-items: flex-end;
+  }
+
+  &__buttons {
+    display: flex;
+    margin-left: auto;
+    gap: 1rem;
+  }
+
   &__item-container {
     display: flex;
   }

@@ -4,10 +4,11 @@ import React from 'react'
 
 import { MenuControls } from '@/components/MenuControls'
 import { CategoryType } from '@/store/models/menu'
+import { RootType } from '@/store/models/Root'
 
 interface MenuComponentViewType {
   categories: CategoryType[]
-  occupiedTable: boolean
+  occupiedTable: RootType['occupiedTable']
 }
 
 export const MenuComponentView = ({

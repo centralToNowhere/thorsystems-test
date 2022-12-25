@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react-lite'
-import React, { SyntheticEvent, useState } from 'react'
+import React, { useState } from 'react'
 
 import { CartItem, CartItemType, createCartItemId } from '@/store/models/cart'
 import { DishType } from '@/store/models/menu'
@@ -23,7 +23,7 @@ export const MenuControls = observer(() => {
     return menu.categories
       .reduce((acc, curr) => {
         return acc.concat(curr.dishes)
-      }, [])
+      }, [] as DishType[])
       .find(dish => {
         return dish.name === dishName
       })
@@ -48,15 +48,14 @@ export const MenuControls = observer(() => {
         CartItem.create({
           id: createCartItemId(),
           quantity: 1,
-          dish: selectedDish,
+          dish: selectedDish.id,
         }),
       )
     }
   }
 
-  const onEnterDishName = (e: SyntheticEvent) => {
-    const value = e.target.value
-    const dish = getDishByName(value)
+  const onEnterDishName = (dishName: string) => {
+    const dish = getDishByName(dishName)
 
     setError('')
 

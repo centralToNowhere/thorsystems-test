@@ -1,6 +1,6 @@
 import { autorun } from 'mobx'
 import { observer } from 'mobx-react-lite'
-import React, { SyntheticEvent, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { TableType } from '@/store/models/table'
 import { useStore } from '@/store/store'
@@ -56,13 +56,7 @@ export const TableChecker = observer(() => {
 
     store.setSelectedTable(table)
 
-    updateTableStatus(table)
-  }
-
-  const onCheck = (e: SyntheticEvent) => {
-    const value = e.target.value
-
-    checkTable(value)
+    updateTableStatus(table, occupiedTable)
   }
 
   useEffect(
@@ -76,7 +70,7 @@ export const TableChecker = observer(() => {
   return (
     <TableCheckerView
       label={searchLabel}
-      onCheck={onCheck}
+      onCheck={checkTable}
       tableStatus={tableStatus}
       error={error}
     />

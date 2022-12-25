@@ -6,6 +6,7 @@ import { useStore } from '@/store/store'
 
 export const Cart = observer(() => {
   const { cart } = useStore()
+  const totalText = `Total: ${cart.total}`
 
-  return <CartView cartItems={cart.items} />
+  return <CartView totalText={totalText} cartItems={cart.items} />
 })
