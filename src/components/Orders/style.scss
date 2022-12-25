@@ -1,0 +1,51 @@
+.orders {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+
+  &__list {
+    flex: 1;
+    overflow-y: auto;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+
+    &-total {
+      display: flex;
+      margin-left: 1rem;
+
+      span:last-child {
+        margin-left: auto;
+      }
+    }
+  }
+
+  &__delimiter {
+    border-bottom: 1px solid coral;
+    margin-bottom: .5rem;
+  }
+
+  &__position {
+    &-list {
+      overflow: auto;
+      margin-bottom: 1rem;
+    }
+
+    &-item {
+      display: flex;
+      margin-left: 1rem;
+      gap: 1rem;
+    }
+
+    &-total-price {
+      margin-left: auto;
+    }
+  }
+
+  &__button-clear {
+    align-self: flex-end;
+  }
+}

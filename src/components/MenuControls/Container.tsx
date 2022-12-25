@@ -68,6 +68,10 @@ export const MenuControls = observer(() => {
     setSelectedDish(dish)
   }
 
+  const isButtonChooseDisabled = () => {
+    return !selectedDish
+  }
+
   return (
     <MenuControlsView
       onAddToCart={onAddToCart}
@@ -75,6 +79,7 @@ export const MenuControls = observer(() => {
       buttonChooseText={buttonChooseText}
       inputPlaceholder={inputPlaceholder}
       error={error}
+      buttonChooseDisabled={isButtonChooseDisabled()}
     />
   )
 })

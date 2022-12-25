@@ -10,6 +10,7 @@ interface MenuControlsViewType {
   inputPlaceholder: string
   error: string
   buttonChooseText: string
+  buttonChooseDisabled: boolean
 }
 
 export const MenuControlsView = ({
@@ -18,6 +19,7 @@ export const MenuControlsView = ({
   inputPlaceholder,
   error,
   buttonChooseText,
+  buttonChooseDisabled,
 }: MenuControlsViewType) => {
   const onEnterDishNameHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
@@ -34,7 +36,11 @@ export const MenuControlsView = ({
         placeholder={inputPlaceholder}
         error={error}
       />
-      <Button onClick={onAddToCart} className={'menu-controls__button'}>
+      <Button
+        onClick={onAddToCart}
+        className={'menu-controls__button'}
+        disabled={buttonChooseDisabled}
+      >
         {buttonChooseText}
       </Button>
     </div>

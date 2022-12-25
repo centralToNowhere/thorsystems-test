@@ -15,6 +15,7 @@ interface TablesViewType {
 export const TablesView = ({ tables, selectedTable }: TablesViewType) => {
   return (
     <div className={'tables'}>
+      <span className={'cafe__section-title'}>Tables</span>
       <div className={'tables__list'}>
         {tables.map(table => {
           const tableClassNames = classNames({

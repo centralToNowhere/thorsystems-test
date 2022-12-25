@@ -21,6 +21,7 @@ export const MenuComponentView = ({
 
   return (
     <div className={'menu'}>
+      <span className={'cafe__section-title'}>Menu</span>
       <ul className={'menu__categories-list'}>
         {categories.map(category => {
           return (

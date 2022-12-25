@@ -2,9 +2,11 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  flex: 1;
 
   &__list {
-    flex: 1
+    flex: 1;
+    overflow-y: auto;
   }
 
   &__controls-container {
@@ -18,12 +20,25 @@
     gap: 1rem;
   }
 
-  &__item-container {
-    display: flex;
-  }
+  &__item {
+    &-container {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
 
-  &__item-price {
-    margin-left: auto;
-    margin-right: 1rem;
+    &-price {
+      margin-left: auto;
+      margin-right: 1rem;
+    }
+
+    &-quantity-controls {
+      display: flex;
+      gap: .5rem;
+    }
+
+    .button > span {
+      display: block;
+    }
   }
 }

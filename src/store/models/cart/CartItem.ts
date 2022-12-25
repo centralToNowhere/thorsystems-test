@@ -24,6 +24,10 @@ export const CartItem = types
     },
     decrementQuantity: () => {
       self.quantity -= 1
+
+      if (self.quantity === 0) {
+        ;(self as CartItemType).remove()
+      }
     },
   }))
 
