@@ -17,7 +17,7 @@
       "relation": "oneToOne",
       "target": "api::table.table"
     },
-    "order_positions": {
+    "positions": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::order-position.order-position"

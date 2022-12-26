@@ -1,6 +1,7 @@
 import './style.scss'
 
 import classNames from 'classnames'
+import { observer } from 'mobx-react-lite'
 import React from 'react'
 
 import { TableChecker } from '@/components/TableChecker'
@@ -12,7 +13,7 @@ interface TablesViewType {
   selectedTable: TableType | null
 }
 
-export const TablesView = ({ tables, selectedTable }: TablesViewType) => {
+export const TableViewBase = ({ tables, selectedTable }: TablesViewType) => {
   return (
     <div className={'tables'}>
       <span className={'cafe__section-title'}>Tables</span>
@@ -35,3 +36,5 @@ export const TablesView = ({ tables, selectedTable }: TablesViewType) => {
     </div>
   )
 }
+
+export const TablesView = observer(TableViewBase)

@@ -1,4 +1,14 @@
-export type { OrderType } from './Order'
+export type {
+  OrderPayloadType,
+  OrderResponseType,
+  OrderSnapshotInType,
+  OrderType,
+} from './Order'
 export { createOrderId, Order } from './Order'
-export type { OrderPositionType } from './OrderPosition'
+export type {
+  OrderPositionPayloadType,
+  OrderPositionResponseType,
+  OrderPositionSnapshotInType,
+  OrderPositionType,
+} from './OrderPosition'
 export { createOrderPositionId, OrderPosition } from './OrderPosition'

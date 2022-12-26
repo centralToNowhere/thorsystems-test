@@ -1,14 +1,10 @@
 import { observer } from 'mobx-react-lite'
-import { castToReferenceSnapshot, castToSnapshot } from 'mobx-state-tree'
+import { castToSnapshot } from 'mobx-state-tree'
 import React from 'react'
 
 import { CartControllersView } from '@/components/CartControllers/View'
-import {
-  createOrderId,
-  createOrderPositionId,
-  Order,
-  OrderPosition,
-} from '@/store/models/order'
+import { CartItemType } from '@/store/models/cart'
+import { createOrderId } from '@/store/models/order'
 import { useStore } from '@/store/store'
 
 export type CartControllersType = 'clear' | 'order'
@@ -22,28 +18,28 @@ export const CartControllers = observer(() => {
     cart.clearCartItems()
   }
 
-  const onOrder = () => {
+  const onOrder = async () => {
     if (!occupiedTable) {
       return
     }
 
-    const order = Order.create({
+    await store.fetchCreateOrder({
       id: createOrderId(),
       table: occupiedTable.id,
       positions: castToSnapshot(
-        cart.items.map(cartItem => {
-          return OrderPosition.create({
-            id: createOrderPositionId(),
+        cart.items.map((cartItem: CartItemType) => {
+          return {
             quantity: cartItem.quantity,
-            dish: castToReferenceSnapshot(cartItem.dish),
-          })
+            dish: cartItem.dish,
+          }
         }),
       ),
     })
 
-    store.addOrder(order)
     cart.clearCartItems()
-    store.setOccupiedTable(null)
+
+    await occupiedTable.fetchUpdateOccupiedState(false)
+    await store.fetchUpdateOccupiedTable(null)
   }
 
   const getButtonHandler = (type: CartControllersType) => {

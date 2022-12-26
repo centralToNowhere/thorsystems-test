@@ -14,7 +14,9 @@ export const Orders = observer(() => {
   const clearOrdersBtnText = 'Clear'
 
   const onClear = () => {
-    getParent<RootType>(orders).clearOrders()
+    const root: RootType = getParent<RootType>(orders)
+
+    root.clearOrders()
   }
 
   return (

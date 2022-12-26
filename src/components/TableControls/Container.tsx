@@ -8,28 +8,31 @@ import { TableControlsView } from './View'
 export const TableControls = observer(() => {
   const store = useStore()
 
-  const onFreeTable = () => {
+  const onFreeTable = async () => {
     if (store.selectedTable) {
-      store.selectedTable.setOccupiedState(false)
+      await store.selectedTable.fetchUpdateOccupiedState(false)
 
       if (store.selectedTable === store.occupiedTable) {
-        store.setOccupiedTable(null)
+        await store.fetchUpdateOccupiedTable(null)
+
         store.cart.clearCartItems()
       }
     }
   }
 
-  const onTakeTable = () => {
+  const onTakeTable = async () => {
     if (store.selectedTable) {
       if (store.selectedTable.occupied) {
         return
       }
 
       if (store.occupiedTable) {
-        store.occupiedTable.setOccupiedState(false)
+        await store.occupiedTable.fetchUpdateOccupiedState(false)
       }
 
-      store.setOccupiedTable(store.selectedTable)
+      await store.fetchUpdateOccupiedTable(store.selectedTable)
+      await store.selectedTable.fetchUpdateOccupiedState(true)
+
       store.cart.clearCartItems()
     }
   }

@@ -2,7 +2,7 @@ import { observer } from 'mobx-react-lite'
 import React, { useState } from 'react'
 
 import { CartItem, CartItemType, createCartItemId } from '@/store/models/cart'
-import { DishType } from '@/store/models/menu'
+import { CategoryType, DishType } from '@/store/models/menu'
 import { useStore } from '@/store/store'
 
 import { MenuControlsView } from './/View'
@@ -21,16 +21,16 @@ export const MenuControls = observer(() => {
 
   const getDishByName = (dishName: string) => {
     return menu.categories
-      .reduce((acc, curr) => {
+      .reduce((acc: DishType[], curr: CategoryType) => {
         return acc.concat(curr.dishes)
       }, [] as DishType[])
-      .find(dish => {
+      .find((dish: DishType) => {
         return dish.name === dishName
       })
   }
 
   const getCartItemByDishName = (dishName: string): CartItemType | undefined => {
-    return cart.items.find(cartItem => {
+    return cart.items.find((cartItem: CartItemType) => {
       return cartItem.dish.name === dishName
     })
   }

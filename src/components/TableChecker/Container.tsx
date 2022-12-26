@@ -41,7 +41,7 @@ export const TableChecker = observer(() => {
   }
 
   const checkTable = (tableId: string) => {
-    const table = tables.find(table => {
+    const table = tables.find((table: TableType) => {
       return table.id === tableId
     })
 
