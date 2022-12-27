@@ -1,5 +1,7 @@
 export type ResourceData<T> = {
-  [k in keyof T]: T[k]
+  data: {
+    [k in keyof T]: T[k]
+  }
 }
 
 export type ResponseType<T> = {
@@ -16,15 +18,15 @@ export interface DataProviderType {
     resourceName: string,
     payload: ResourceData<T>,
   ) => Promise<ResponseType<R>>
-  update: <T>(
+  update: <T, R>(
     resourceName: string,
     id: string,
     payload: ResourceData<T>,
-  ) => Promise<ResponseType<T>>
-  updateSingle: <T>(
+  ) => Promise<ResponseType<R>>
+  updateSingle: <T, R>(
     resourceName: string,
     payload: ResourceData<T>,
-  ) => Promise<ResponseType<T>>
+  ) => Promise<ResponseType<R>>
   delete: <T>(resourceName: string, id: string) => Promise<ResponseType<T>>
 }
 
@@ -36,14 +38,14 @@ export abstract class DataProvider implements DataProviderType {
     resourceName: string,
     payload: ResourceData<T>,
   ): Promise<ResponseType<R>>
-  abstract update<T>(
+  abstract update<T, R>(
     resourceName: string,
     id: string,
     payload: ResourceData<T>,
-  ): Promise<ResponseType<T>>
-  abstract updateSingle<T>(
+  ): Promise<ResponseType<R>>
+  abstract updateSingle<T, R>(
     resourceName: string,
     payload: ResourceData<T>,
-  ): Promise<ResponseType<T>>
+  ): Promise<ResponseType<R>>
   abstract delete<T>(resourceName: string, id: string): Promise<ResponseType<T>>
 }

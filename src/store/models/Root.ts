@@ -22,7 +22,7 @@ import type {
 import { Order } from '@/store/models/order'
 import type { TableType } from '@/store/models/table'
 import { Table } from '@/store/models/table'
-import { StoreEnvType } from '@/store/store'
+import type { StoreEnvType } from '@/store/store'
 
 export const Root = types
   .model('Root', {
@@ -35,33 +35,29 @@ export const Root = types
   })
   .actions(self => {
     const dataProvider = getEnv<StoreEnvType>(self).dataProvider
-    // @ts-ignore
-    const actionObj = {
+
+    return {
       async afterCreate() {
         await this.loadRoot()
       },
       loadTables: async (): Promise<TableType[]> => {
-        const { data } = await dataProvider.getMany('tables')
+        const { data } = await dataProvider.getMany<TableType[]>('tables')
 
-        return data as TableType[]
+        return data
       },
       loadOrders: async (): Promise<OrderType[]> => {
-        const { data } = await dataProvider.getMany('orders')
+        const { data } = await dataProvider.getMany<OrderType[]>('orders')
 
-        return data as OrderType[]
+        return data
       },
       loadMenu: async (): Promise<MenuType> => {
-        const { data } = await dataProvider.getSingle('menu')
+        const { data } = await dataProvider.getSingle<MenuType>('menu')
 
-        return data as MenuType
+        return data
       },
       async loadRoot() {
         try {
-          const root: {
-            data: {
-              occupiedTable: TableType | null
-            }
-          } = await dataProvider.getSingle('root')
+          const root = await dataProvider.getSingle<RootType>('root')
           const tables = await this.loadTables()
           const menu = await this.loadMenu()
           const orders = await this.loadOrders()
@@ -103,7 +99,12 @@ export const Root = types
       },
       async fetchUpdateOccupiedTable(table: TableType | null) {
         try {
-          await dataProvider.updateSingle('root', {
+          await dataProvider.updateSingle<
+            {
+              occupiedTable: string | null
+            },
+            RootType
+          >('root', {
             data: {
               occupiedTable: table ? table.id : null,
             },
@@ -169,21 +170,21 @@ export const Root = types
       addOrder: (order: OrderType) => {
         self.orders.push(order)
       },
-      clearOrders: flow(function* () {
-        try {
-          for (const order of self.orders) {
-            yield actionObj.fetchDeleteOrder(order.id)
-          }
-
-          destroy(self.orders)
-        } catch (e) {
-          console.error('Failed to delete orders', e)
-        }
-      }),
     }
-
-    return actionObj
   })
+  .actions(self => ({
+    clearOrders: flow(function* () {
+      try {
+        for (const order of self.orders) {
+          yield self.fetchDeleteOrder(order.id)
+        }
+
+        destroy(self.orders)
+      } catch (e) {
+        console.error('Failed to delete orders', e)
+      }
+    }),
+  }))
 
 export interface RootType extends Instance<typeof Root> {}
 export interface RootSnapshotItType extends SnapshotIn<typeof Root> {}

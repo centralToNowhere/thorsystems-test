@@ -33,10 +33,8 @@ export const Order = types
 export interface OrderType extends Instance<typeof Order> {}
 export interface OrderSnapshotInType extends SnapshotIn<typeof Order> {}
 export interface OrderPayloadType {
-  data: {
-    table: string | number
-    positions: string[]
-  }
+  table: string | number
+  positions: string[]
 }
 export interface OrderResponseType {
   data: {

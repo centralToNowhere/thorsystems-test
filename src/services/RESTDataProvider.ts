@@ -46,10 +46,14 @@ export class RESTDataProvider extends DataProvider implements DataProviderType {
     }
   }
 
-  async update<T>(resourceName: string, id: string, payload: ResourceData<T>) {
+  async update<T, R>(
+    resourceName: string,
+    id: string,
+    payload: ResourceData<T>,
+  ): Promise<ResponseType<R>> {
     const url = `${this.apiUrl}/${resourceName}/${id}${this.query}`
 
-    const { data, status, statusText } = await this.httpClient.put<T>(url, payload)
+    const { data, status, statusText } = await this.httpClient.put<R>(url, payload)
 
     return {
       data,
@@ -70,10 +74,10 @@ export class RESTDataProvider extends DataProvider implements DataProviderType {
     }
   }
 
-  async updateSingle<T>(resourceName: string, payload: ResourceData<T>) {
+  async updateSingle<T, R>(resourceName: string, payload: ResourceData<T>) {
     const url = `${this.apiUrl}/${resourceName}${this.query}`
 
-    const { data, status, statusText } = await this.httpClient.put<T>(url, payload)
+    const { data, status, statusText } = await this.httpClient.put<R>(url, payload)
 
     return {
       data,

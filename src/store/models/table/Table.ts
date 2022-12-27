@@ -14,7 +14,12 @@ export const Table = types
     return {
       async fetchUpdateOccupiedState(state: boolean) {
         try {
-          await dataProvider.update('tables', self.id, {
+          await dataProvider.update<
+            {
+              occupied: boolean
+            },
+            TableType[]
+          >('tables', self.id, {
             data: {
               occupied: state,
             },
